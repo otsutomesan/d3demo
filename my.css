@@ -1,0 +1,80 @@
+
+.top_space {
+    margin-top:1em;
+}
+
+/* bar */
+.bar rect {
+  fill: steelblue;
+  shape-rendering: crispEdges;
+}
+
+.bar text {
+  fill: #fff;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+/* heatmap */
+.htbl table {
+	border-collapse: collapse;
+    font-size:0.6em;
+}
+.htbl th {
+	border-bottom: #e3e3e3 1px solid;
+	border-left: #e3e3e3 1px solid;
+	text-align: left;
+	background: #f7f7f7;
+	padding: 1px;
+	font-weight: normal;
+    font-size:0.7em;
+}
+.htbl td {
+	border-bottom: #e3e3e3 1px solid;
+	padding: 0;
+    line-height: 1em;
+    /*
+	border-right: #e3e3e3 1px solid;
+	text-align: left;
+	padding: 1px;
+    */
+}
+
+/* line chart */
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+  -webkit-transition: opacity 0.3s;
+  -moz-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+path.invisible {
+  fill: none;
+  stroke: rgba(0,0,0,0);
+  stroke-width: 8px;
+}
+
+text.label {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+

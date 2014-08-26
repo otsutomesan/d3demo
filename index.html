@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/css/my.css" rel="stylesheet">
+<link href="assets/css/prettify.css" rel="stylesheet">
+<!--
+<script src="http://d3js.org/d3.v3.min.js"></script>
+-->
+<script src="assets/js/prettify.js"></script>
+<!--
+<script src="assets/js/bootstrap.min.js"></script>
+-->
+<script src="assets/js/d3.v3.min.js"></script>
+<script src="assets/js/underscore.js"></script>
+<script src="assets/js/draw.js"></script>
+<body onload="main()">
+<div class="container">
+
+<div class="row">
+<h2>D3.jsを利用してみる</h2>
+    <div class="col-md-6">
+    <a href="d3js.org">D3.js</a>を利用したデモです。
+    <br />表示するデータはYahoo financeのヒストリカルデータを利用。
+    <br />例：<a href="http://finance.yahoo.com/q/hp?s=YHOO">Yahoo! Inc.</a>
+    <br />22銘柄の日足データ3カ月分を対象に、前日からの変化率をtsvファイルにまとめてあります。
+    <br /><a href="usstock.tsv">usstock.tsv</a>
+    <br />
+    <br /> 3種類のグラフを表示
+    <ul>
+    <li><a href="#heatmap">ヒートマップ</a></li>
+    <li><a href="#line">折れ線グラフ</a></li>
+    <li><a href="#hist">ヒストグラム</a></li>
+    </ul>
+    </div>
+    <div class="col-md-6">
+    <h3>データの読み込みについて</h3>
+    JSONはもちろん、csv,tsvフォーマットのデータファイルも読み込めます。
+    <br />csv,tsvデータはJavascriptの連想配列として取り込まれ、csvのヘッダー行を参考に自動的にキーが作成されます。
+    また、キー毎に列データとしてもアクセスできるようになっています。
+    <br />読み込まれたデータはただの連想配列なのでUnderscore,JQuery,AngularJSからもシームレスに呼び出すことができます。
+    </div>
+</div>
+
+<hr>
+<div class="row">
+<a name="heat"></a>
+<h2>日毎の変化率(heatmap)</h2>
+<div id="canvas_heat"></div>
+<div class="row top_space">
+    <div class="col-md-8">
+<pre class="prettyprint">
+D3を利用したDOM(タグ)の作成 (要約)
+var table = d3.select('#canvas_heat')
+    .append('table')   //tableタグ追加
+    .append('tbody')   //tbodyタグ追加
+    .selectAll('tr')
+    .data(raw)
+    .enter()
+    .append('tr')      //trタグ追加
+        .selectAll('td')
+        .data(function (csv_data) { ...  })
+        .enter()
+        .append('td')    //tdタグ追加   
+</pre>
+    </div>
+    <div class="col-md-4">
+    <pre class="prettyprint">
+selectAll() // 存在していないタグ(DOM) でもOK
+data()      // 表示するデータを指定
+enter()     // 
+append()    // DOMを作成、追加
+上記のメソッドチェーンを呼び出すとデータの数に合わせてタグを作成してくれる。
+    </pre>
+    </div>
+</div>
+</div><!-- //row -->
+<hr>
+<div class="row">
+<a name="line"></a>
+<h2>日毎の変化率(line)</h2>
+<div id="canvas_line"></div>
+</div><!-- //row -->
+<hr>
+<div class="row">
+<a name="hist"></a>
+<h2>変化率(絶対値)の分布</h2>
+<div id="canvas_hist"></div>
+</div><!-- //row -->
+</div><!-- //container -->
+
+<hr>
+<footer>
+</footer>
+</body>
+</html>
+
